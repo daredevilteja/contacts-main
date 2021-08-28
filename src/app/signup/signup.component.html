@@ -1,0 +1,44 @@
+<div class="login-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title> SignUp</mat-card-title>
+    </mat-card-header>
+    <form #form="ngForm" (submit)="saveData()">
+      <mat-card-content>
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Email"
+            type="text"
+            name="email"
+            required
+            [(ngModel)]="newUser.email"
+          />
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Password"
+            type="password"
+            name="password"
+            required
+            [(ngModel)]="newUser.password"
+          />
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          [disabled]="form.invalid"
+          type="submit"
+          mat-button
+          color="primary"
+        >
+          Register
+        </button>
+        <button type="button" mat-button color="primary" (click)="cancel()">
+          Cancel
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
