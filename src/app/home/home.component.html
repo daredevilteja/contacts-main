@@ -34,6 +34,28 @@
           [(ngModel)]="selectedContact.name"
         />
       </mat-form-field>
+      <div *ngIf="selectedContact.phNum.length != 0">
+        <mat-label>Phone Number</mat-label>
+        <div
+          *ngFor="
+            let phNumber of selectedContact.phNum;
+            let phoneNoCount = index
+          "
+        >
+          <mat-form-field appearance="fill">
+            <input
+              matInput
+              placeholder="eg. 999999999"
+              min="1000000000"
+              max="9999999999"
+              type="number"
+              required
+              name="phoneNumber-{{ phoneNoCount }}"
+              [(ngModel)]="selectedContact.phNum[phoneNoCount]"
+            />
+          </mat-form-field>
+        </div>
+      </div>
       <mat-form-field appearance="fill">
         <mat-label>Phone Number</mat-label>
         <input
@@ -43,10 +65,14 @@
           max="9999999999"
           type="number"
           required
-          name="number"
-          [(ngModel)]="selectedContact.phNum"
+          name="1"
+          [(ngModel)]="phoneNumber"
         />
       </mat-form-field>
+
+      <button mat-button type="button" (click)="addPhoneNumberField()">
+        Add
+      </button>
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
         <input
@@ -55,6 +81,7 @@
           required
           name="email"
           [(ngModel)]="selectedContact.email"
+          [email]="true"
           multiple
         />
         <mat-hint

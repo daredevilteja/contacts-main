@@ -28,3 +28,12 @@
   display: grid;
   justify-content: center;
 }
+
+h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+h3:hover {
+  overflow: visible;
+}

@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
   flag = true;
   selectedContact = null;
   contactList = null;
+  phoneNumbersCount = 0;
+  phoneNumber = null;
 
   constructor(private route: ActivatedRoute, private router: Router) {}
 
@@ -39,7 +41,7 @@ export class HomeComponent implements OnInit {
     this.selectedContact = {
       id: null,
       name: '',
-      phNum: null,
+      phNum: [],
       email: '',
     };
   }
@@ -53,7 +55,8 @@ export class HomeComponent implements OnInit {
     } else {
       this.selectedContact.id += 1;
     }
-
+    this.selectedContact.phNum[this.phoneNumbersCount] = this.phoneNumber;
+    this.phoneNumber = null;
     this.contactList.push(this.selectedContact);
     sessionStorage.setItem(
       this.userEmail,
@@ -78,5 +81,11 @@ export class HomeComponent implements OnInit {
 
   redirectToHome() {
     this.router.navigate(['/login']);
+  }
+
+  addPhoneNumberField() {
+    this.selectedContact.phNum[this.phoneNumbersCount] = this.phoneNumber;
+    this.phoneNumbersCount++;
+    this.phoneNumber = null;
   }
 }
