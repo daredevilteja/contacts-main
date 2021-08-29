@@ -1,16 +1,16 @@
 <section *ngIf="flag; else elseBlock">
-  <h1>{{ title }}</h1>
+  <h1 class="title">{{ title }}</h1>
   <div class="contactsContainer">
     <div *ngFor="let contact of contactList">
       <mat-card class="contactStyle">
-        <h1>{{ contact.name }}</h1>
-        <h1>{{ contact.phNum }}</h1>
-        <h1>{{ contact.email }}</h1>
+        <h3>Name: {{ contact.name }}</h3>
+        <h3>Phone Number: {{ contact.phNum }}</h3>
+        <h3>Email: {{ contact.email }}</h3>
       </mat-card>
     </div>
   </div>
   <br />
-  <section>
+  <section class="contentActions">
     <button mat-raised-button color="primary" (click)="setFlag()">
       Add Contact
     </button>

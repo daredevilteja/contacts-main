@@ -20,11 +20,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.resetSelectedContact();
     this.userId = this.route.snapshot.queryParams.id;
-    Object.entries(sessionStorage).map((entry) => {
+    Object.entries(sessionStorage).some((entry) => {
       let key = entry[0];
       let value = JSON.parse(entry[1]);
       if (value.id == this.userId) {
         this.userEmail = key;
+        return;
       }
     });
     this.contactList =

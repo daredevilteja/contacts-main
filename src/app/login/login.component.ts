@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
 
   login(userInfo) {
     if (sessionStorage.getItem(userInfo.email)) {
-      console.log(JSON.parse(sessionStorage.getItem(userInfo.email)).password);
       if (
         userInfo.password ==
         JSON.parse(sessionStorage.getItem(userInfo.email)).password
