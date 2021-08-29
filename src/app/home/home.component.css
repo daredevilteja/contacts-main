@@ -1,0 +1,13 @@
+.contactStyle {
+  max-width: 25%;
+}
+
+.contactsContainer {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+
+.formContainer {
+  display: grid;
+  justify-content: center;
+}

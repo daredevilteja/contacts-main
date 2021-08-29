@@ -3,10 +3,9 @@
   <div class="contactsContainer">
     <div *ngFor="let contact of contactList">
       <mat-card class="contactStyle">
-        <h1>{{ contact.id }}</h1>
-        <h3>{{ contact.name }}</h3>
-        <h3>{{ contact.phNum }}</h3>
-        <h3>{{ contact.email }}</h3>
+        <h1>{{ contact.name }}</h1>
+        <h1>{{ contact.phNum }}</h1>
+        <h1>{{ contact.email }}</h1>
       </mat-card>
     </div>
   </div>
@@ -59,7 +58,7 @@
           multiple
         />
         <mat-hint
-          >Hint: For multiple email address seperate them by ','
+          >Hint: For multiple email address separate them by ','
         </mat-hint>
       </mat-form-field>
     </mat-card-content>
