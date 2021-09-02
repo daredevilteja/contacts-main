@@ -17,15 +17,6 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {}
 
   saveData() {
-    // sessionStorage.setItem(
-    //   this.newUser.email,
-    //   JSON.stringify({
-    //     id: sessionStorage.length + 1,
-    //     contacts: [],
-    //     password: this.newUser.password,
-    //   })
-    // );
-    // this.router.navigate(['/login']);
     const user = {
       email: this.newUser.email,
       password: this.newUser.password,
