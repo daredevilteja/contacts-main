@@ -23,15 +23,34 @@ export class LoginComponent implements OnInit {
   }
 
   login(userInfo) {
-    if (sessionStorage.getItem(userInfo.email)) {
-      if (
-        userInfo.password ==
-        JSON.parse(sessionStorage.getItem(userInfo.email)).password
-      ) {
-        let userId = JSON.parse(sessionStorage.getItem(userInfo.email)).id;
-        this.router.navigate(['/home'], { queryParams: { id: userId } });
-      }
-    }
+    fetch('http://localhost:9999/login', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: userInfo.email,
+        password: userInfo.password,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    })
+      .then((r) => {
+        if (r.ok) {
+          let userId = 0;
+          r.json().then((res) => (userId = res.id));
+
+          return { success: true, id: userId };
+        } else {
+          return r.json();
+        }
+      })
+      .then((r) => {
+        if (r.success === true) {
+          this.router.navigate(['/home'], {
+            queryParams: { id: r.id },
+          });
+        }
+      });
   }
 
   changeRoute() {
